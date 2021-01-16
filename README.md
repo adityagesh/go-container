@@ -18,4 +18,7 @@ Create a container from scratch in golang
 5. Devices
 
 # Reference
-Ref: https://www.youtube.com/watch?v=_TsSmSu57Zo
+1. https://www.youtube.com/watch?v=_TsSmSu57Zo  (Liz Rice)
+2. https://www.infoq.com/articles/build-a-container-golang/
+3. https://www.youtube.com/watch?v=8fi7uSYlOdc  (Liz Rice)
+4. https://www.youtube.com/watch?v=_TsSmSu57Zo  (Liz Rice)
