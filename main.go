@@ -41,13 +41,18 @@ func child() {
 	cmd.Stdout = os.Stdout
 	cmd.Stdin = os.Stdin
 	must(syscall.Sethostname([]byte("Container")))
-	must(syscall.Mount("rootfs", "rootfs", "", syscall.MS_BIND, ""))
-	must(os.MkdirAll("rootfs/oldrootfs", 0700))
-	must(syscall.PivotRoot("rootfs", "rootfs/oldrootfs"))
-	// must(syscall.Chroot(""))
+	// must(syscall.Mount("rootfs", "rootfs", "", syscall.MS_BIND, ""))
+	// must(os.MkdirAll("rootfs/oldrootfs", 0700))
+	/*
+		int pivot_root(const char *new_root, const char *put_old);
+		pivot_root() moves the root file system of the current process to the directory put_old and makes new_root the new root file system of the current process.
+	*/
+	// must(syscall.PivotRoot("rootfs", "rootfs/oldrootfs"))
+	must(syscall.Chroot("rootfs"))
 	must(os.Chdir("/"))
-	// must(syscall.Mount("proc", "proc", "proc", 0, ""))
+	must(syscall.Mount("proc", "proc", "proc", 0, ""))
 	must(cmd.Run())
+	syscall.Unmount("/proc", 0)
 }
 
 func gracefulShutdown(term chan os.Signal) {
