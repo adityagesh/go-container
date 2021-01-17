@@ -22,3 +22,4 @@ Create a container from scratch in golang
 2. https://www.infoq.com/articles/build-a-container-golang/
 3. https://www.youtube.com/watch?v=8fi7uSYlOdc  (Liz Rice)
 4. https://www.youtube.com/watch?v=_TsSmSu57Zo  (Liz Rice)
+5. https://blog.gojekengineering.com/building-containers-from-scratch-c2368a8c8701

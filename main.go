@@ -41,9 +41,12 @@ func child() {
 	cmd.Stdout = os.Stdout
 	cmd.Stdin = os.Stdin
 	must(syscall.Sethostname([]byte("Container")))
-	must(syscall.Chroot(""))
+	must(syscall.Mount("rootfs", "rootfs", "", syscall.MS_BIND, ""))
+	must(os.MkdirAll("rootfs/oldrootfs", 0700))
+	must(syscall.PivotRoot("rootfs", "rootfs/oldrootfs"))
+	// must(syscall.Chroot(""))
 	must(os.Chdir("/"))
-	must(syscall.Mount("proc", "proc", "proc", 0, ""))
+	// must(syscall.Mount("proc", "proc", "proc", 0, ""))
 	must(cmd.Run())
 }
 
